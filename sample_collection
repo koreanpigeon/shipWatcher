@@ -1,0 +1,29 @@
+import bing_image_downloader.downloader as downloader
+import splitfolders
+import torchvision.datasets as datasets
+
+
+# Step 1: Pointing to Datasets
+def create_images():
+    my_path = "Data/images"
+    images_to_create = ["empty", "person", "vehicle"]
+    for image in images_to_create:
+        downloader.download(image, limit=100, output_dir=my_path)
+
+
+# Step 4: Allocate images into Training, Validation Sets
+def allocate_images(input_folder, output_folder, ratio_to_training):
+    splitfolders.ratio(
+        input=input_folder,
+        output=output_folder,
+        seed=1337,
+        ratio=(ratio_to_training, 1 - ratio_to_training),
+        move=True)  # This MOVES the files
+    
+allocate_images("Data/images", "Data", 0.7)
+
+
+# Step 5: Use ImageFolder to link folder to transforms and assign labels based on folder name
+
+train_dataset = datasets.ImageFolder(root="Data/train", transform=transforms_training_images)
+val_dataset = datasets.ImageFolder(root="Data/val", transform=transform_val_images)
