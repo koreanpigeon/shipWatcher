@@ -63,11 +63,11 @@ class Data(Dataset):
 
 
 # Step 3: Create objects with selected hyperparameters for training
-def prepare_and_train():
+def prepare_and_train(epochs, lr, weight_decay, betas):
     shipWatcher = get_shipWatcher()
     shipWatcher = shipWatcher.to(device)
     criterion = nn.CrossEntropyLoss()
-    optimiser = optim.Adam(shipWatcher.fc.parameters(), lr=0.001, weight_decay=0.01)
+    optimiser = optim.Adam(shipWatcher.fc.parameters(), lr=lr, weight_decay=weight_decay, betas=betas)
     train_dataset = Data([train_images, train_labels], transform=pic_transform)
     val_dataset = Data([val_images, val_labels], transform=pic_transform)
     train_loader = DataLoader(dataset=train_dataset, batch_size=5, shuffle=True)
