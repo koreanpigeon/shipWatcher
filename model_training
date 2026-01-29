@@ -45,6 +45,7 @@ for label,image in enumerate(class_list):
         path = os.path.join(val_dir, file_name)
         val_images.append(path)
         val_labels.append(label)
+
 class Data(Dataset):
     def __init__(self, dataset, transform=None):
         self.x = dataset[0]
@@ -62,18 +63,19 @@ class Data(Dataset):
 
 
 # Step 3: Create objects with selected hyperparameters for training
-shipWatcher = get_shipWatcher()
-shipWatcher = shipWatcher.to(device)
-criterion = nn.CrossEntropyLoss()
-optimiser = optim.Adam(shipWatcher.fc.parameters(), lr=0.001, weight_decay=0.01)
-train_dataset = Data([train_images, train_labels], transform=pic_transform)
-val_dataset = Data([val_images, val_labels], transform=pic_transform)
-train_loader = DataLoader(dataset=train_dataset, batch_size=5, shuffle=True)
-val_loader = DataLoader(dataset=val_dataset, batch_size=len(val_images))
+def prepare_and_train():
+    shipWatcher = get_shipWatcher()
+    shipWatcher = shipWatcher.to(device)
+    criterion = nn.CrossEntropyLoss()
+    optimiser = optim.Adam(shipWatcher.fc.parameters(), lr=0.001, weight_decay=0.01)
+    train_dataset = Data([train_images, train_labels], transform=pic_transform)
+    val_dataset = Data([val_images, val_labels], transform=pic_transform)
+    train_loader = DataLoader(dataset=train_dataset, batch_size=5, shuffle=True)
+    val_loader = DataLoader(dataset=val_dataset, batch_size=len(val_images))
 
 
 # Step 4: Define function for training, validating shipWatcher model
-def train_shipWatcher(epochs):
+
     for epoch in range(epochs):
         shipWatcher.train()
         train_loss = 0
@@ -99,8 +101,6 @@ def train_shipWatcher(epochs):
                 val_accuracy = (torch.argmax(yhat, dim=1)==y).sum().item()
                 print(f"{val_accuracy}/{len(val_images)}")
 
+# Step 5: Train model
+
 train_shipWatcher(20)
-
-
-# Step 5: Save parameters of optimal model
-torch.save(shipWatcher.state_dict(), "shipWatcher.pth")
