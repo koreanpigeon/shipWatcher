@@ -26,26 +26,6 @@ def get_shipWatcher():
     return model
 
 
-# Step 2: Create custom PyTorch dataset implementation utilising "lazy loading" for memory-efficient data pipelining
-
-train_labels = []
-train_images = []
-val_labels = []
-val_images = []
-class_list = ["empty", "person", "vehicle"]
-
-for label,image in enumerate(class_list):
-    train_dir = os.path.join("./Data/train/",image)
-    val_dir = os.path.join("./Data/val/",image)
-    for file_name in os.listdir(train_dir):
-        path = os.path.join(train_dir, file_name)
-        train_images.append(path)
-        train_labels.append(label)
-    for file_name in os.listdir(val_dir):
-        path = os.path.join(val_dir, file_name)
-        val_images.append(path)
-        val_labels.append(label)
-
 class Data(Dataset):
     def __init__(self, dataset, transform=None):
         self.x = dataset[0]
