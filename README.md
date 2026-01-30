@@ -23,7 +23,7 @@ I am focusing on improving model accuracy by
 
 # Challenges I'm Solving
 * **Data Scarcity:** Finding suitable datasets of images in a Naval Base proves to be challenging due to Operational Security(OPSEC)
-* **Class Imbalance:** My "Empty" class is smaller than "Ship" or "Person." I am implementing **Weighted Random Sampling** to prevent model bias.
+* **Class Imbalance:** My "Empty" class is smaller than "Vehicle" or "Person." I am implementing **Weighted Random Sampling** to prevent model bias.
 * **Accuracy:** Current accuracy is limited by background noise. I am working on **Hard Negative Mining** to reduce false positives on poles and shadows.
 
 ## 🚀 Future Roadmap
