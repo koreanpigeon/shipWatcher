@@ -1,29 +1,35 @@
-import bing_image_downloader.downloader as downloader
-import splitfolders
-import torchvision.datasets as datasets
+from pathlib import Path
+from PIL import Image
+
+train_images = []
+train_labels = []
+val_images = []
+val_labels = []
+
+empty_train_folder = Path("/Users/kimjimin/Desktop/Empty_train")
+person_train_folder = Path("/Users/kimjimin/Desktop/Person_train")
+vehicle_train_folder = Path("/Users/kimjimin/Desktop/Vehicle_train")
+empty_val_folder = Path("/Users/kimjimin/Desktop/Empty_val")
+person_val_folder = Path("/Users/kimjimin/Desktop/Person_val")
+vehicle_val_folder = Path("/Users/kimjimin/Desktop/Vehicle_val")
 
 
-# Step 1: Pointing to Datasets
-def create_images():
-    my_path = "Data/images"
-    images_to_create = ["empty", "person", "vehicle"]
-    for image in images_to_create:
-        downloader.download(image, limit=100, output_dir=my_path)
+for class_index, folder in enumerate([empty_train_folder, person_train_folder, vehicle_train_folder]):
+    for file in folder.iterdir():
+        if file.is_file():
+            try:
+                with Image.open(file) as img:
+                    train_images.append(file)
+                    train_labels.append(class_index)
+            except(Image.UnidentifiedImageError, IOError):
+                continue
 
-
-# Step 4: Allocate images into Training, Validation Sets
-def allocate_images(input_folder, output_folder, ratio_to_training):
-    splitfolders.ratio(
-        input=input_folder,
-        output=output_folder,
-        seed=1337,
-        ratio=(ratio_to_training, 1 - ratio_to_training),
-        move=True)  # This MOVES the files
-    
-allocate_images("Data/images", "Data", 0.7)
-
-
-# Step 5: Use ImageFolder to link folder to transforms and assign labels based on folder name
-
-train_dataset = datasets.ImageFolder(root="Data/train", transform=transforms_training_images)
-val_dataset = datasets.ImageFolder(root="Data/val", transform=transform_val_images)
+for class_index, folder in enumerate([empty_val_folder, person_val_folder, vehicle_val_folder]):
+    for file in folder.iterdir():
+        if file.is_file():
+            try:
+                with Image.open(file) as img:
+                    val_images.append(file)
+                    val_labels.append(class_index)
+            except(Image.UnidentifiedImageError, IOError):
+                continue
