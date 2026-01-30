@@ -27,7 +27,7 @@ def get_shipWatcher():
     return model
 
 
-# Step 3: Create objects with selected hyperparameters for training
+# Define function for training, validating shipWatcher model with certain hyperparameters
 def prepare_and_train(epochs, lr, weight_decay, betas):
     shipWatcher = get_shipWatcher()
     shipWatcher = shipWatcher.to(device)
@@ -37,9 +37,6 @@ def prepare_and_train(epochs, lr, weight_decay, betas):
     val_dataset = Data([val_images, val_labels], transform=pic_transform)
     train_loader = DataLoader(dataset=train_dataset, batch_size=5, shuffle=True)
     val_loader = DataLoader(dataset=val_dataset, batch_size=len(val_images))
-
-
-# Step 4: Define function for training, validating shipWatcher model
 
     for epoch in range(epochs):
         shipWatcher.train()
