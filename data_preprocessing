@@ -1,5 +1,24 @@
 from pathlib import Path
 from PIL import Image
+from torch.utils.data import Dataset
+
+# Create custom PyTorch dataset implementation utilising "lazy loading" for memory-efficient data pipelining
+
+class Data(Dataset):
+    def __init__(self, dataset, transform=None):
+        self.x = dataset[0]
+        self.y = dataset[1]
+        self.transform = transform
+        self.len = len(dataset[0])
+
+    def __getitem__(self, index):
+        x = self.transform(Image.open(self.x[index]).convert("RGB"))
+        y = self.y[index]
+        return x, y
+
+    def __len__(self):
+        return self.len
+
 
 train_images = []
 train_labels = []
