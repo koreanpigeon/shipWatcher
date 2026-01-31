@@ -1,12 +1,10 @@
 import torch
 import cv2
 from PIL import Image
-from model_training import pic_transform
-from model_training import get_shipWatcher
-from model_training import class_list
-
-
+from src.train import pic_transform, get_shipWatcher, class_list
 device = torch.device("mps")
+
+
 shipWatcher = get_shipWatcher()
 state_dict = torch.load("shipWatcher.pth", map_location=device)
 shipWatcher.load_state_dict(state_dict)
