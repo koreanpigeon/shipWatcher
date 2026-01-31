@@ -1,4 +1,4 @@
-# The shipWatcher project
+## The shipWatcher project
 My first Machine Learning(Computer Vision) project using **PyTorch** to detect unidentified personnel / vehicle approaching a Navy vessel at night.
 This project aims to solve a problem that I, and many others in the Navy today still suffer from -- Gangway Watch.
 
@@ -12,16 +12,45 @@ I first started learning ML in the Navy, and I thought it would be meaningful to
 This project is currently in the **active development phase**. 
 I am focusing on improving model accuracy by 
     1. Addressing domain gaps between web-scraped images and real-world video frames
-    2. Training models with images of various weather conditions that a Naval Base is susceptible to due to its proximity to the sea
+    2. Training models with images of various weather conditions that a Naval Base is susceptible to due to its proximity to the sea.
+
+## 🚀 Getting Started
+
+### 1. Installation
+Clone the repository and install the required dependencies:
+
+git clone [https://github.com/kimjiminnus/shipWatcher.git](https://github.com/kimjiminnus/shipWatcher.git)
+cd shipWatcher
+pip install -r requirements.txt
+
+### 2. Local file organisation structure
+shipWatcher/
+├── data/
+│   ├── train/          # Training Images
+│   │   ├── Empty/
+│   │   ├── Person/
+│   │   └── Vehicle/
+│   └── val/            # Validation Images
+│       ├── Empty/
+│       ├── Person/
+│       └── Vehicle/
+├── models/             # Where 'shipWatcher.pth' will be saved
+└── src/                # Source code (train.py, inference.py, data_preprocessing.py, tune_hyperparams.py, video.processing.py)
+
+### 3. Training shipwatcher from scratch & saving state_dict
+python src/train.py
+
+### 4. Testing your own image files on the shipWatcher 
+python src/inference.py
 
 
-# The Tech Stack
+## The Tech Stack
 * **Language:** Python 3.x
 * **Framework:** PyTorch
 * **Computer Vision:** Torchvision, OpenCV
 * **Model:** ResNet-18 with a customised 3-neuron output layer (Transfer Learning)
 
-# Challenges I'm Solving
+## Challenges I'm Solving
 * **Data Scarcity:** Finding suitable datasets of images in a Naval Base proves to be challenging due to Operational Security(OPSEC)
 * **Class Imbalance:** My "Empty" class is smaller than "Vehicle" or "Person." I am implementing **Weighted Random Sampling** to prevent model bias.
 * **Accuracy:** Current accuracy is limited by background noise. I am working on **Hard Negative Mining** to reduce false positives on poles and shadows.
