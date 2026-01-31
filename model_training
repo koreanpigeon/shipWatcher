@@ -1,9 +1,0 @@
-
-
-device = torch.device("mps")
-class_list = ["empty", "person", "vehicle"]
-
-
-
-
-
