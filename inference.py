@@ -1,10 +1,9 @@
 import torch
 import torch.nn as nn
-import torchvision.models as models
-import torchvision.transforms as transforms
 from PIL import Image
 from pathlib import Path
-from src.utils import device, class_list, pic_transform, get_shipWatcher
+from src.model_def import get_shipWatcher
+from src.utils import device, class_list, pic_transform
 
 
 # 1. The Prediction Engine
