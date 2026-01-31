@@ -37,7 +37,8 @@ shipWatcher/
 │       ├── Person/
 │       └── Vehicle/
 ├── models/             # Where 'shipWatcher.pth' will be saved
-└── src/                # Source code (train.py, inference.py, data_preprocessing.py, tune_hyperparams.py, video.processing.py)
+├── src/                # Source code (train.py, inference.py, data_preprocessing.py, tune_hyperparams.py, video.processing.py)
+└── requirements.txt
 ```
 
 ### 3. Training shipwatcher from scratch & saving state_dict
