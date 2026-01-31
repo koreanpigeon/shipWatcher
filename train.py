@@ -7,6 +7,12 @@ from data_preprocessing import Data, train_images, train_labels, val_images, val
 from torch.utils.data import DataLoader
 
 
+# Transform composition for images
+
+pic_transform = transforms.Compose([transforms.Resize((224, 224)),
+                                    transforms.ToTensor(),
+                                    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
+
 # Initialise ResNet-18 with pre-trained weights as a feature extractor
 # Modify full connected(fc) layer with nn.Linear for 3-class classification
 
@@ -20,6 +26,7 @@ def get_shipWatcher():
 
 
 # Define function for training, validating shipWatcher model with certain hyperparameters
+
 def prepare_and_train(epochs, lr, weight_decay, betas):
     shipWatcher = get_shipWatcher()
     shipWatcher = shipWatcher.to(device)
