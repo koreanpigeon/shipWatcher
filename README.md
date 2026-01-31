@@ -1,4 +1,4 @@
-## The shipWatcher project
+## The shipWatcher
 My first Machine Learning(Computer Vision) project using **PyTorch** to detect unidentified personnel / vehicle approaching a Navy vessel at night.
 This project aims to solve a problem that I, and many others in the Navy today still suffer from -- Gangway Watch.
 
