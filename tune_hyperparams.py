@@ -1,5 +1,5 @@
 import torch
-from model_training import get_shipWatcher, prepare_and_train, device
+from src.train import get_shipWatcher, prepare_and_train, device
 
 shipWatcher = get_shipWatcher()
 shipWatcher = shipWatcher.to(device)
