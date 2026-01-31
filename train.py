@@ -1,12 +1,11 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import torchvision.models as models
-import torchvision.transforms as transforms
 from torch.utils.data import DataLoader, Dataset
 from PIL import Image
 from src.data_preprocessing import train_samples, val_samples
-from src.utils import device, class_list, pic_transform, get_shipWatcher
+from src.model_def import get_shipWatcher
+from src.utils import device, class_list, pic_transform
 
 
 # Create custom PyTorch dataset implementation utilising "lazy loading" for memory-efficient data pipelining
