@@ -11,8 +11,8 @@ I first started learning ML in the Navy, and I thought it would be meaningful to
 ## Current Status: Training & Data Collection**
 This project is currently in the **active development phase**. 
 I am focusing on improving model accuracy by 
-    1. Addressing domain gaps between web-scraped images and real-world video frames
-    2. Training models with images of various weather conditions that a Naval Base is susceptible to due to its proximity to the sea.
+*    1. Addressing domain gaps between web-scraped images and real-world video frames
+*    2. Training models with images of various weather conditions that a Naval Base is susceptible to due to its proximity to the sea.
 
 ## 🚀 Getting Started
 
