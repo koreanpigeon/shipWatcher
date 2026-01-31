@@ -19,7 +19,7 @@ I am focusing on improving model accuracy by
 ### 1. Installation
 Clone the repository and install the required dependencies:
 
-git clone [https://github.com/kimjiminnus/shipWatcher.git](https://github.com/kimjiminnus/shipWatcher.git)
+git clone https://github.com/kimjiminnus/shipWatcher.git
 cd shipWatcher
 pip install -r requirements.txt
 
