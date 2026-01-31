@@ -1,1 +1,15 @@
+# Core Machine Learning & Deep Learning (Fixed versions for stability between Torch and NumPy)
+torch==2.2.2
+torchvision==0.17.2
 
+# Computer Vision & Image Processing (Imported as 'cv2' and 'PIL' in code)
+opencv-python>=4.8.0
+Pillow==12.1.0
+
+# Data Science & Math
+numpy==1.26.4
+pandas>=2.0.0
+scikit-learn>=1.3.0
+
+# Visualisation (Optional but recommended for visualising training loss & validation accuracy)
+matplotlib>=3.7.0
