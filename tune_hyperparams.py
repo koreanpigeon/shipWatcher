@@ -1,5 +1,6 @@
 import torch
-from src.train import get_shipWatcher, prepare_and_train, device
+from src.train import get_shipWatcher, prepare_and_train
+device = torch.device("mps")
 
 shipWatcher = get_shipWatcher()
 shipWatcher = shipWatcher.to(device)
