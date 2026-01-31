@@ -6,6 +6,7 @@ import torchvision.models as models
 import torchvision.transforms as transforms
 from PIL import Image
 from data_preprocessing import Data, train_images, train_labels, val_images, val_labels
+device = torch.device("mps")
 
 
 # Transform composition for images
@@ -13,6 +14,7 @@ from data_preprocessing import Data, train_images, train_labels, val_images, val
 pic_transform = transforms.Compose([transforms.Resize((224, 224)),
                                     transforms.ToTensor(),
                                     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
+class_list = ["empty", "person", "vehicle"]
 
 
 # Create custom PyTorch dataset implementation utilising "lazy loading" for memory-efficient data pipelining
