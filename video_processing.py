@@ -1,7 +1,8 @@
 import torch
 import cv2
 from PIL import Image
-from src.utils import device, class_list, pic_transform, get_shipWatcher
+from src.model_def import get_shipWatcher
+from src.utils import device, class_list, pic_transform
 
 
 shipWatcher = get_shipWatcher()
